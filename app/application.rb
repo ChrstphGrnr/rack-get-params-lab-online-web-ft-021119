@@ -20,6 +20,9 @@ class Application
       else
         @@cart.each {|i|resp.write "#{i}\n"}
       end
+    elsif req.path.match(/add/)
+      item = req.params["item"]
+      @@items.include?(item) ? @@cart << item : resp.write "Path Not Found"
     else
       resp.write "Path Not Found"
     end
