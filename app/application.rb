@@ -22,7 +22,11 @@ class Application
       end
     elsif req.path.match(/add/)
       item = req.params["item"]
-      @@items.include?(item) ? @@cart << item : resp.write "Path Not Found"
+      if @@items.include?(item) 
+         @@cart << item  
+      else 
+        resp.write "Path Not Found"
+      end
     else
       resp.write "Path Not Found"
     end
